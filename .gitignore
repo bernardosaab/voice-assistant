@@ -1,0 +1,15 @@
+# secrets — LiveKit credentials live here, never commit
+.env
+.env.local
+.env.*.local
+
+# python / uv
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# local runtime data
+data/*.db
+logs/
+*.jsonl
