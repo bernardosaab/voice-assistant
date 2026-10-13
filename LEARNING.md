@@ -3,6 +3,20 @@
 One section per episode: the concept, the naive version, what we measured, the fix, and what *you* wrote.
 Design: [docs/superpowers/specs/2026-10-11-humanlike-receptionist-design.md](docs/superpowers/specs/2026-10-11-humanlike-receptionist-design.md)
 
+## ▶ Resume here (status as of 2026-10-13)
+| Episode | Status |
+|---|---|
+| E0 Setup | Scaffold done and pushed. **Waiting on you:** LiveKit credentials + first `console` call |
+| E1 Silence-only endpointing → turn detector | Next up |
+| E1b Per-caller turn profiles · E2 Perceived latency · E3 First sentence vs TTFT · E4 Fillers · E5 Async payment · E6 Hold/idempotency · E7 Speakable output & interruptions · E7b Misheard dates/numbers · E8 Benchmark | Planned (see spec) |
+
+**Next actions**
+1. You: install the CLI (`winget install LiveKit.LiveKitCLI`), run `lk cloud auth`, write `.env.local`
+   (`lk app env -w`, or copy `.env.example`), then `uv run agent.py console` and talk to Ava.
+   While talking, notice how long she waits after you stop, and whether "a room for… um… two nights" gets cut off.
+2. Then start E1: add a `--naive-turns` mode (VAD-only, short silence timeout), build a pause test
+   script, and compare cut-off % and added wait against the turn detector.
+
 ## E0 — Setup
 
 **Concept: the cascade pipeline.** A voice agent here is three models in a chain:
